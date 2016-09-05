@@ -13,20 +13,22 @@
 #include <Keyboard.h>
 
 void setup() {
-  Keyboard.begin();          // Iniciamos funcionalidad de teclado
   CircuitPlayground.begin(); // Iniciamos funciones del Playground, necesario para luces más adelante
-  delay(1000);               // Esperamos un segundo a que el equipo nos registre como teclado
-  Keyboard.write(0x83);      // Caracter de "KEY_LEFT_GUI"
-  delay(1300);               // Algunos basados en Gnome se toman su tiempo
-  Keyboard.write(0xB0);      // Enter nos lleva a escribir
-  delay(1000);
-  Keyboard.print("terminal");// Abrimos una terminal
-  Keyboard.write(0xB0);      // Y damos enter
-  delay(1000);
-  Keyboard.print("wget -O tele.jpg http://bit.ly/2c7nVwO && gsettings set org.gnome.desktop.background picture-uri file://$(pwd)/tele.jpg && exit");
-  Keyboard.write(0xB0);      // Fondo de los teletubies, castigo de Alf Delgado en FuerzaG :)
-  Keyboard.println("");
-  Keyboard.end();
+  if (CircuitPlayground.slideSwitch()) {
+    Keyboard.begin();          // Iniciamos funcionalidad de teclado
+    delay(1000);               // Esperamos un segundo a que el equipo nos registre como teclado
+    Keyboard.write(0x83);      // Caracter de "KEY_LEFT_GUI"
+    delay(1300);               // Algunos basados en Gnome se toman su tiempo
+    Keyboard.write(0xB0);      // Enter nos lleva a escribir
+    delay(1000);
+    Keyboard.print("terminal");// Abrimos una terminal
+    Keyboard.write(0xB0);      // Y damos enter
+    delay(1000);
+    Keyboard.print("wget -O tele.jpg http://bit.ly/2c7nVwO && gsettings set org.gnome.desktop.background picture-uri file://$(pwd)/tele.jpg && exit");
+    Keyboard.write(0xB0);      // Fondo de los teletubies, castigo de Alf Delgado en FuerzaG :)
+    Keyboard.println("");
+    Keyboard.end();
+  }
 }
 
 void loop() {
