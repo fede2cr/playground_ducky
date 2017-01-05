@@ -5,7 +5,7 @@ before_install:
 script:
   - ls ..
   - ls playground-ducky
-  - playground-ducky/arduino-headless.sh --verify --board arduino:avr:circuitplay32u4cat playground-ducky/playground-ducky/playground-ducky.ino
+  - ./arduino-headless.sh --verify --board arduino:avr:circuitplay32u4cat playground-ducky/playground-ducky.ino
 notifications:
   email:
     on_success: change
