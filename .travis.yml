@@ -4,8 +4,8 @@ before_install:
   - source <(curl -SLs https://raw.githubusercontent.com/fede2cr/travis-ci-arduino/master/install.sh)
 script:
   - ls
-  - ls playground_ducky
-  - playground_ducky/arduino-headless.sh --verify --board arduino:avr:circuitplay32u4cat playground_ducky/playground-ducky/playground-ducky.ino
+  - ls playground-ducky
+  - playground-ducky/arduino-headless.sh --verify --board arduino:avr:circuitplay32u4cat playground-ducky/playground-ducky/playground-ducky.ino
 notifications:
   email:
     on_success: change
